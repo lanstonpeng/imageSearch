@@ -1,0 +1,14 @@
+{
+  "name": "knockout.js",
+  "version": "2.2.0rc",
+  "main": "./knockout.js",
+  "dependencies": {},
+  "gitHead": "158de159558b30c84b22b8f12e3c2b1e84ed1340",
+  "_id": "knockout.js@2.2.0rc",
+  "readme": "ERROR: No README.md file found!",
+  "description": "ERROR: No README.md file found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bowerjs/knockout.git"
+  }
+}
