@@ -1,7 +1,9 @@
 ###TO-DO
 
 ----
-
+- use openCV to solve 
+    - SURF algorithm
+    - k-nearest neighbor algorithm
 - pHash algorithm
     - understanding DFT , DCT ...
     - algorithm optimization
