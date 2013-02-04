@@ -3,6 +3,7 @@ from flask import Flask,request,redirect,url_for
 from werkzeug import secure_filename
 from PIL import Image
 from core import *
+from manipulator import *
 
 UPLOAD_FOLDER = "/upload"
 app = Flask(__name__)
@@ -15,7 +16,6 @@ def test(val="none"):
 
 @app.route("/upload",methods=['GET','POST'])
 def upload_file():
-    print "test"
     if request.method =="POST":
         x = request.form.get("x",0,type=int)
         y = request.form.get("y",0,type=int)
@@ -23,6 +23,7 @@ def upload_file():
         h = request.form.get("h",0,type=int)
         file = request.files["file"]
         filename = secure_filename(file.filename)
+        #print os.listdir(os.getcwd())
         file.save("upload/"+filename)
         img = Image.open("upload/"+filename)
         box = (x , y , x+w, y+h)
@@ -36,10 +37,15 @@ def upload_file():
         engine.extractSURF(imggrey)
         engine.trainKNN()
         result = engine.matching()
-        print result
+
+        final = dealing(result)
+        print final
+        #print renderImage(final)
+        #print result
 
         #return redirect(url_for("/"))
-    return "get nothing"
+    return renderImage(final) 
+    #return "get nothing"
 
 
 if __name__ == '__main__':

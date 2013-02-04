@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
+import sys,glob,os
 
-gallarySet = ["images/B.jpg","images/i2.jpg","images/i1.jpg"]
+
+#gallarySet = ["images/B.jpg","images/i2.jpg","images/i1.jpg"]
+EXTS = 'jpg', 'jpeg', 'JPG', 'JPEG', 'gif', 'GIF', 'png', 'PNG'
 
 class Engine(object):
     def __init__(self):
@@ -32,6 +35,11 @@ class Engine(object):
         originalMatch = []
         templateMatch = []
         result = []
+        #os.chdir("images")
+        os.chdir("static")
+        gallarySet = []
+        for ext in EXTS:
+            gallarySet.extend(glob.glob("*.%s" % ext ))
         for modelImage in gallarySet:
             templateImg = self.loadImage(modelImage)
             templateGrey = self.greytifyImg(templateImg)
@@ -57,7 +65,8 @@ class Engine(object):
 
                 x,y = keys[idx].pt
                 templateMatch.append( (int(x),int(y)) )
-            result.append(match*1.0/(match + unmatch))
+            result.append((modelImage, match*1.0/(match + unmatch)))
+        os.chdir("..")
         #print match,unmatch
         #return match,unmatch,originalMatch,templateMatch
         return result
