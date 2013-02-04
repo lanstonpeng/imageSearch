@@ -1,0 +1,8 @@
+{
+  "name": "jcrop",
+  "version": "0.9.10",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tapmodo/Jcrop.git"
+  }
+}

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-gallarySet = ["images/B.jpg"]
+gallarySet = ["images/B.jpg","images/i2.jpg","images/i1.jpg"]
 
 class Engine(object):
     def __init__(self):
@@ -31,6 +31,7 @@ class Engine(object):
     def matching(self):
         originalMatch = []
         templateMatch = []
+        result = []
         for modelImage in gallarySet:
             templateImg = self.loadImage(modelImage)
             templateGrey = self.greytifyImg(templateImg)
@@ -56,13 +57,15 @@ class Engine(object):
 
                 x,y = keys[idx].pt
                 templateMatch.append( (int(x),int(y)) )
-        print match,unmatch
-        return match,unmatch,originalMatch,templateMatch
+            result.append(match*1.0/(match + unmatch))
+        #print match,unmatch
+        #return match,unmatch,originalMatch,templateMatch
+        return result
 
 
-engine = Engine()
-img = engine.loadImage("images/cropped.jpg")
-imggrey = engine.greytifyImg(img)
-engine.extractSURF(imggrey)
-engine.trainKNN()
-engine.matching()
+#engine = Engine()
+#img = engine.loadImage("images/cropped.jpg")
+#imggrey = engine.greytifyImg(img)
+#engine.extractSURF(imggrey)
+#engine.trainKNN()
+#engine.matching()
