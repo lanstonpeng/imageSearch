@@ -11,6 +11,7 @@
 - use openCV to solve  
 	- ~~SURF algorithm ~~
     - ~~k-nearest neighbor algorithm ~~
+    - understanding SIFT algorithm
 	 
 - ~~pHash algorithm ~~
     - ~~understanding DFT , DCT ... ~~
