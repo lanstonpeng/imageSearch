@@ -1,4 +1,6 @@
-###V1.0 
+Paper Draft:  
+<https://docs.google.com/document/d/1j0DZ880msQjBF9sd2zTIh32XLwi5-LywhiIYy0VIHt8/edit>
+###V0.9 
 ![input](1.png)
 ![output](2.png)
 ###TO-DO 
