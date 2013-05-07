@@ -5,8 +5,9 @@ import sys,glob,os
 
 #gallarySet = ["images/B.jpg","images/i2.jpg","images/i1.jpg"]
 EXTS = 'jpg', 'jpeg', 'JPG', 'JPEG', 'gif', 'GIF', 'png', 'PNG'
-
 class Engine(object):
+    originalMatch = []
+    flag = True
     def __init__(self):
         self.kp = None
         self.descritors = None
@@ -25,6 +26,7 @@ class Engine(object):
         self.surf = cv2.FeatureDetector_create("SURF")
         self.surfDescriptorExtractor = cv2.DescriptorExtractor_create("SURF")
         self.kp = self.surf.detect(imggrey)
+        # Calculate the keypoints and the descritor objects
         self.kp, self.descritors = self.surfDescriptorExtractor.compute(imggrey,self.kp)
     def trainKNN(self):
         samples = np.array(self.descritors)
@@ -32,7 +34,6 @@ class Engine(object):
         self.knn = cv2.KNearest()
         self.knn.train(samples,responses)
     def matching(self):
-        originalMatch = []
         templateMatch = []
         result = []
         #os.chdir("images")
@@ -41,6 +42,7 @@ class Engine(object):
         for ext in EXTS:
             gallarySet.extend(glob.glob("*.%s" % ext ))
         for modelImage in gallarySet:
+            #images in gallary 
             templateImg = self.loadImage(modelImage)
             templateGrey = self.greytifyImg(templateImg)
             #match points count
@@ -61,11 +63,15 @@ class Engine(object):
                 else:
                     unmatch+=1
                 x,y = self.kp[res].pt
-                originalMatch.append( (int(x),int(y)) )
+                if Engine.flag:
+                    Engine.originalMatch.append( (int(x),int(y)) )
 
                 x,y = keys[idx].pt
                 templateMatch.append( (int(x),int(y)) )
-            result.append((modelImage, match*1.0/(match + unmatch)))
+            #print originalMatch; 
+            Engine.flag = False
+            #where the magic happen
+            result.append((modelImage, match*1.0/(match + unmatch), templateMatch))
         os.chdir("..")
         #print match,unmatch
         #return match,unmatch,originalMatch,templateMatch

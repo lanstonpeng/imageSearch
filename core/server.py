@@ -37,9 +37,8 @@ def upload_file():
         engine.extractSURF(imggrey)
         engine.trainKNN()
         result = engine.matching()
-
         final = dealing(result)
-        print final
+        #print final
         #print renderImage(final)
         #print result
 

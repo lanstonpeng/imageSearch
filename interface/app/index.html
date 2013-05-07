@@ -21,8 +21,7 @@
     <body>
     <div class="container" style="margin-top:50px">
       <div class="rows fuild">
-        <div class="drag" ></div>
-        <form action="http://127.0.0.1:8888/upload" method="POST" enctype="multipart/form-data" >
+        <form  class="pull-right" action="http://127.0.0.1:8888/upload" method="POST" enctype="multipart/form-data" >
           <input type="file"  name="file" id="chooseFile" class="btn">
           <input type="hidden" id="x" name="x" value="0">
           <input type="hidden" id="y" name="y" value="0">
@@ -30,6 +29,8 @@
           <input type="hidden" id="h" name="h" value="0">
           <input id="sendForm" type="submit" value="Crop Image" class="btn-primary btn btn-large">
         </form>
+        <div class="image"></div>
+        <div class="drag" ></div>
       </div>
     </div>
     <!-- build:js scripts/amd-app.js -->

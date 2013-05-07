@@ -3,10 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <style type="text/css">
+    body{
+      background:black;
+    }
+    ul{
+      list-style:none;
+    }
+    li{
+      float:left;
+      margin-left:20px;
+      color:white;
+    }
+    img{
+      width:200px;
+    }
+  </style>
 </head>
 <body>
+  <ul class="list">
   {% for item in images %}
-  <img src="{{item.url}}" alt="{{item.name}}" />
+    <li>
+      <img src="{{item.url}}" alt="{{item.name}}" />
+      <span>rank: {{item.rank}}</span>
+    </li>
   {% endfor %}
+   
+  </ul>
 </body>
 </html>

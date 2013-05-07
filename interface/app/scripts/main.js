@@ -23,9 +23,9 @@ require(['jquery','jscrop'], function($,JsCrop) {
         reader = new FileReader();
 
         reader.onload = function(event){ 
-          var image = new Image()
+          var image = new Image();
           image.src = event.target.result;
-          document.body.appendChild(image);
+          $('.image').html('').append($(image));
           area.css("height",'0px');
           $(image).Jcrop({
             onSelect:function updateCoords(c)

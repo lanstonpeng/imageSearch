@@ -1,13 +1,13 @@
 window.onload = function(){
 
-var canvas = document.createElement("canvas");
-    canvas.width=68,
-    canvas.height=68;
+var canvas        = document.createElement("canvas");
+    canvas.width  = 68,
+    canvas.height = 68;
 
 
     document.body.appendChild(canvas);
-    var ctx    = canvas.getContext("2d"),
-    img    = document.getElementById("img");
+    var ctx = canvas.getContext("2d"),
+    img     = document.getElementById("img");
 
     ctx.drawImage(img,0,0,68,68);
 
