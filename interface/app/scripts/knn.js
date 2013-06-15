@@ -57,8 +57,9 @@ function drawResult(node,dist){
 function init(){
 
     //generate some random point
-    initNodes(20,"circle","yellow");
-    initNodes(30,"rectangle","blue");
+    initNodes(50,"circle","yellow");
+    initNodes(80,"rectangle","blue");
+    initNodes(50,"circle","orange");
 
     //init the testgin point
     initNodes(1,"circle","red");
